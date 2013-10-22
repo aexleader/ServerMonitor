@@ -13,5 +13,13 @@ It contains features:
  * Query the size of giving directory
 
 
+Usage:
 
+./sample directory have some runnable examples.
+
+cd ./sample
+python SampleTest.py
+
+
+It will should the monitoring result of the SampleTest process itself.
 
