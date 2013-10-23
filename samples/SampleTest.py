@@ -9,7 +9,7 @@ def queryPID():
     '''
     pid = 0
     mon = monitor.Monitor()
-    pid = mon.getPID("washington", "python SampleTest")
+    pid = mon.getPID(mon.getUser(), "python SampleTest")
     print "The process ID of this one is", str(pid)
 
 def checkAverageCPU():
@@ -19,7 +19,7 @@ def checkAverageCPU():
     utilization = 0.0
     mon = monitor.Monitor()
     for i in range(0, 100):
-        rtn = mon.getCPUUtilization("washington", "python SampleTest")
+        rtn = mon.getCPUUtilization(mon.getUser(), "python SampleTest")
         utilization += rtn
 
     utilization /= 100.0
@@ -30,7 +30,7 @@ def checkMemUsage():
     Checking the Mem Cost 
     '''
     mon = monitor.Monitor()
-    rtn = mon.getMemUsage("washington", "python SampleTest")
+    rtn = mon.getMemUsage(mon.getUser(), "python SampleTest")
     print "This case take", str(rtn) + "M of memory"
 
 def checkDirSize():
@@ -54,7 +54,7 @@ def checkStreamHandles():
     Query the opened stream handler
     '''
     mon = monitor.Monitor()
-    rtn = mon.getHandles("washington", "python SampleTest")
+    rtn = mon.getHandles(mon.getUser(), "python SampleTest")
     print str(rtn), "handles opened for this case"
 
 def main():    

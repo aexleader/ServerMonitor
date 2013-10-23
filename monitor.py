@@ -19,10 +19,25 @@ class Monitor(object):
 
     ENVIRONMENT = os.environ
     WORK_DIR = ''
-    
+
     def __init__(self):
         self.WORK_DIR = os.path.dirname(__file__)
         self.ENVIRONMENT['PATH'] = ':'.join([self.ENVIRONMENT['PATH'], self.WORK_DIR])
+
+    def getUser(self):
+        '''
+        Fetch the current user who use this process
+        '''
+        try:
+            proc = Popen('whoami',
+                         shell=True,
+                         env = self.ENVIRONMENT,
+                         cwd=self.WORK_DIR,
+                         stdout = PIPE,)
+            userName = proc.communicate()[0].strip()
+            return userName
+        except OSError:
+            return ""
 
     def getPID(self, userName, procName):
         '''
