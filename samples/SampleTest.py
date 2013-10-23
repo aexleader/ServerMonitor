@@ -3,6 +3,15 @@ import os
 sys.path.append('../')
 import monitor
 
+def queryPID():
+    '''
+    Get the process ID by username & process description
+    '''
+    pid = 0
+    mon = monitor.Monitor()
+    pid = mon.getPID("washington", "python SampleTest")
+    print "The process ID of this one is", str(pid)
+
 def checkAverageCPU():
     '''
     Checking the CPU usage by getting mutiple values and return the mean.
@@ -54,6 +63,7 @@ def main():
     checkDirSize()
     checkDiskCapacity()
     checkStreamHandles()
+    queryPID()
     
 if __name__ == "__main__":
     main()

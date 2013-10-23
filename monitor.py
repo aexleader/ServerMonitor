@@ -23,6 +23,21 @@ class Monitor(object):
     def __init__(self):
         self.WORK_DIR = os.path.dirname(__file__)
         self.ENVIRONMENT['PATH'] = ':'.join([self.ENVIRONMENT['PATH'], self.WORK_DIR])
+
+    def getPID(self, userName, procName):
+        '''
+        Fetch the process ID by given information
+        '''
+        try:
+            proc = Popen('./getpid.sh ' + userName + ' ' + procName,
+                         shell=True,
+                         env = self.ENVIRONMENT,
+                         cwd=self.WORK_DIR,
+                         stdout = PIPE,)
+            pid = proc.communicate()[0]
+            return int(pid)
+        except OSError:
+            return -1.0
         
     def getCPUUtilization(self, userName, procName):
         '''
@@ -102,6 +117,7 @@ class Monitor(object):
             return -1
         
 if __name__ == "__main__":
+    
     monitor = Monitor()
     ans = monitor.getCPUUtilization("washington", "emacs")
     ans2 = monitor.getCPUUtilization("root", "emacs")
