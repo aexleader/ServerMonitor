@@ -79,11 +79,7 @@ class Monitor(object):
         try:
             proc = Popen('getdirsz.sh ' + dirName,
                          shell=True,
-<<<<<<< HEAD
                          env = self.ENVIRONMENT,
-=======
-                         env = self.ENVIRONMENT,                                               
->>>>>>> 2d823b5fcf6bb9497070aafd9aa2bc012ab5c21b
                          stdout = PIPE,)
             utilization = proc.communicate()[0]
             return float(utilization.strip())
