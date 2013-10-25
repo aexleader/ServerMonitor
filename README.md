@@ -24,5 +24,5 @@ python SampleTest.py
 It will should the monitoring result of the SampleTest process itself.
 
 TO-DO List:
-# Add more examples: monitoring process in testcase, implementing daemon that checking system resources and alert. 
-# Write a simple setup.py.
+###### Add more examples: monitoring process in testcase, implementing daemon that checking system resources and alert. 
+###### Write a simple setup.py.
