@@ -26,12 +26,20 @@ def checkMemUsage():
 
 def checkDirSize():
     '''
-    Query the size of responding directory    
+    Query the size of responding directory, As this function use accumulate solution, it's not fit for frequent usage.  
     '''
     mon = monitor.Monitor()
     rtn = mon.getDirSize("../")
     print "This library takes", str(rtn)+"K"
 
+def checkDiskCapacity():
+    '''
+    Query the usage capacity of disk which the directory is mounted.
+    '''
+    mon = monitor.Monitor()
+    rtn = mon.getDiskUtilization("/")
+    print "The disk mounted to / is used", str(rtn)+"%"
+    
 def checkStreamHandles():
     '''
     Query the opened stream handler
@@ -44,6 +52,7 @@ def main():
     checkAverageCPU()
     checkMemUsage()
     checkDirSize()
+    checkDiskCapacity()
     checkStreamHandles()
     
 if __name__ == "__main__":
